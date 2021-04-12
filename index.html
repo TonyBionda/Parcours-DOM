@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+        function DOMtext(node, content, space) {
+            content.push({ nodeName: node.nodeName, space: space });
+            node.childNodes.forEach(elem => {
+                content = DOMtext(elem, content, space + 6)
+            });
+            return content;
+        }
+        function onClick() {
+            document.getElementById("content").innerHTML = DOMtext(document.body, [], 0).map(x => {
+                return `${Array(x.space).fill('\xa0').join('')}${x.nodeName}<br>`;
+            }).join('');
+        }
+    </script>
+    <div class="container">
+        <button onclick="onClick();">Générer le DOM</button>
+        <div id="content"></div>
+    </div>
+    <!--Le HTML suivant a été créé pour tester le programme (il n'a aucune signification propre en tant que tel)-->
+    <nav>
+        <p>
+            <br>
+            <br>
+        </p>
+        <div></div>
+        <a href=""></a>
+        <a href="">
+            <img src="" alt="">
+            <div>
+                <h1></h1>
+            </div>
+        </a>
+    </nav>
+    <div class="test"></div>
+    <div class="test">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="test"></div>
+    <div class="test">
+        <div>
+            <span></span>
+        </div>
+    </div>
+    <div class="test"></div>
+    <div class="test"></div>
+</body>
+
+</html>

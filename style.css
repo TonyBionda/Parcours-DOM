@@ -1,0 +1,13 @@
+#content{
+    border: 1px solid black;
+    min-height: 10rem;
+}
+
+.container{
+    border: 2px solid black;
+    font-family: 'Source Code Pro', monospace;
+}
+
+ul{
+    list-style: none;
+}
